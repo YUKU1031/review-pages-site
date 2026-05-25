@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>農家民宿おくやまさん Web予約・通販導線レビュー</title>
+  <style>
+    :root{--ink:#1f2d26;--muted:#5b6a61;--line:#dbe6da;--cream:#fffef9;--green:#2d6e4f;--green2:#4f9669;--mint:#e9f5eb;--amber:#9a6a24;--amberSoft:#fff2d9;--red:#a84b3c;--redSoft:#fae7e3;--blue:#2f6f8f;--blueSoft:#e8f2f6;--shadow:0 18px 45px rgba(48,65,54,.10)}
+    *{box-sizing:border-box}body{margin:0;color:var(--ink);background:radial-gradient(circle at top left,rgba(105,161,111,.16),transparent 320px),linear-gradient(180deg,#fcfbf6 0%,#f7f5ec 100%);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.75}
+    main{width:min(1080px,calc(100% - 32px));margin:0 auto;padding:28px 0 64px}.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:24px;align-items:stretch;padding:36px 0 28px}.hero-copy{display:flex;flex-direction:column;justify-content:center;min-height:390px;padding:12px 0}
+    .eyebrow{color:var(--green);font-size:13px;font-weight:800;margin:0 0 10px}h1{font-size:clamp(30px,5vw,54px);line-height:1.18;letter-spacing:0;margin:0}h2{font-size:clamp(22px,3vw,30px);line-height:1.35;letter-spacing:0;margin:0}h3{font-size:16px;line-height:1.45;letter-spacing:0;margin:0}p,li{color:var(--muted);font-size:14px;margin:0}.lead{max-width:720px;color:var(--muted);font-size:16px;margin:18px 0 0}
+    .panel,.card,.finding,.copy,.before,.after{background:var(--cream);border:1px solid var(--line);border-radius:8px;box-shadow:0 10px 28px rgba(48,65,54,.06)}.panel{padding:22px;box-shadow:var(--shadow)}.stamp{display:inline-flex;align-items:center;min-height:34px;padding:6px 10px;color:var(--green);background:var(--mint);border:1px solid #cae1ca;border-radius:999px;font-size:13px;font-weight:700}
+    .summary-list,.finding-list,.plain-list{display:grid;gap:12px;margin:20px 0 0;padding:0;list-style:none}.summary-list li,.plain-list li{padding:13px;background:#fbfff9;border:1px solid #e0eadf;border-radius:8px}
+    section{padding:34px 0;border-top:1px solid var(--line)}.section-head{display:flex;align-items:end;justify-content:space-between;gap:18px;margin-bottom:18px}.section-note{max-width:460px;color:var(--muted);font-size:14px;margin:0}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.card{padding:18px}.card-top{display:flex;gap:12px;align-items:center;margin-bottom:10px}
+    .icon{width:34px;height:34px;display:inline-grid;place-items:center;color:var(--green);background:white;border:1px solid #d8e7d8;border-radius:8px;flex:0 0 auto}.icon svg{width:18px;height:18px;stroke:currentColor;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+    .finding{display:grid;grid-template-columns:116px 1fr 1.1fr;gap:16px;align-items:stretch;padding:16px}.priority{display:grid;align-content:center;justify-items:center;gap:6px;min-height:100%;border-radius:8px;font-weight:800}.priority strong{font-size:24px;line-height:1}.priority span{font-size:12px}.priority-a{color:var(--red);background:var(--redSoft)}.priority-b{color:var(--amber);background:var(--amberSoft)}.priority-c{color:var(--blue);background:var(--blueSoft)}.finding h3{margin-bottom:6px}.suggestion{background:#f7fbf5;border:1px solid #d7e8d3;border-radius:8px;padding:14px}.suggestion b,.copy b{display:block;color:var(--green);font-size:13px;margin-bottom:6px}
+    .demo{display:grid;grid-template-columns:.85fr 1.15fr;gap:18px;align-items:start}.before,.after{overflow:hidden}.demo-label{padding:12px 14px;font-size:13px;font-weight:800;border-bottom:1px solid var(--line)}.before .demo-label{color:var(--amber);background:#fff7e7}.after .demo-label{color:var(--green);background:var(--mint)}.demo-body{padding:16px}.choice-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.choice{min-height:182px;padding:14px;border:1px solid #d7e8d3;border-radius:8px;background:#fbfff9}.choice b{display:block;color:var(--ink);font-size:15px;margin-bottom:7px}.choice small{display:block;color:var(--green);font-size:12px;font-weight:800;margin-bottom:8px}.choice span{display:block;color:var(--muted);font-size:13px;line-height:1.65}.button{display:inline-block;margin-top:12px;padding:9px 12px;color:white;background:var(--green2);border-radius:6px;font-size:13px;font-weight:700;text-decoration:none}
+    .copy-box,.support{display:grid;gap:14px}.copy{padding:16px}.support{grid-template-columns:1fr 1fr;align-items:stretch}.mini-list{margin:12px 0 0;padding-left:18px}.mini-list li{margin:5px 0}footer{color:var(--muted);font-size:13px;padding-top:28px;border-top:1px solid var(--line)}
+    @media(max-width:860px){main{width:min(100% - 24px,1080px)}.hero,.demo,.support{grid-template-columns:1fr}.hero-copy{min-height:auto;padding:18px 0 0}.grid,.choice-grid{grid-template-columns:1fr}.section-head{display:block}.section-note{margin-top:8px}.finding{grid-template-columns:1fr}.priority{min-height:72px;grid-auto-flow:column;justify-content:start;padding:0 16px}}
+  </style>
+</head>
+<body>
+  <main>
+    <header class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">外から拝見した無料所感レビュー</p>
+        <h1>農家民宿おくやまさんの<br>Web予約・通販導線レビュー</h1>
+        <p class="lead">宿泊、発酵体験、マクロビオティック、お米・どぶろく通販の魅力を、初めて訪れた方が目的別に選びやすくするための見せ方を整理しました。</p>
+      </div>
+      <aside class="panel">
+        <span class="stamp">1ページ簡易レビュー</span>
+        <ul class="summary-list">
+          <li>見る範囲は、公式サイト・宿泊予約フォーム・発酵体験・商品注文導線です。</li>
+          <li>評価ではなく、初めて予約・購入する人の目線で「迷いやすそうな箇所」を整理しています。</li>
+          <li>すぐ試せる文言例と、入口整理の見せ方サンプルまで入れています。</li>
+        </ul>
+      </aside>
+    </header>
+
+    <section>
+      <div class="section-head"><h2>まず良いなと感じた点</h2><p class="section-note">内容が豊かだからこそ、目的別に入り口を分けると魅力が伝わりやすくなりそうです。</p></div>
+      <div class="grid">
+        <div class="card"><div class="card-top"><span class="icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"></path></svg></span><h3>宿泊と発酵体験の組み合わせ</h3></div><p>農家民宿として泊まるだけでなく、発酵体験やマクロビオティックへ広がる独自性があります。</p></div>
+        <div class="card"><div class="card-top"><span class="icon"><svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.7l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.7l7 4a2 2 0 0 0 2 0l7-4a2 2 0 0 0 1-1.7Z"></path><path d="m3.3 7 8.7 5 8.7-5"></path><path d="M12 22V12"></path></svg></span><h3>お米・どぶろくの通販導線もある</h3></div><p>宿泊後の購入や、泊まる前に商品だけ買う人にもつながる導線があります。</p></div>
+        <div class="card"><div class="card-top"><span class="icon"><svg viewBox="0 0 24 24"><path d="M4 19.5V4.5A2.5 2.5 0 0 1 6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5Z"></path><path d="M8 7h8"></path><path d="M8 11h8"></path><path d="M8 15h5"></path></svg></span><h3>フォーム内容が具体的</h3></div><p>宿泊日、人数、食事の選択、返信後に予約確定という流れが書かれていて、安心材料があります。</p></div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head"><h2>初めての方が迷いやすそうな点</h2><p class="section-note">「悪い点」ではなく、予約・購入前に確認したいことがもう少しまとまると良さそうな箇所です。</p></div>
+      <ul class="finding-list">
+        <li class="finding"><div class="priority priority-a"><strong>A</strong><span>最初に整えたい</span></div><div><h3>泊まる・体験する・買うの入口を分ける</h3><p>宿泊、発酵体験、お米、どぶろく、マクロビオティックと魅力が多いため、初回訪問者はどこから見ればよいか迷う可能性があります。</p></div><div class="suggestion"><b>具体案</b><p>トップや予約ページに「泊まりたい」「発酵体験をしたい」「商品を買いたい」「相談したい」の4入口を置きます。</p></div></li>
+        <li class="finding"><div class="priority priority-a"><strong>A</strong><span>予約判断に近い</span></div><div><h3>宿泊と体験の組み合わせ方を見せる</h3><p>宿泊だけか、体験も組み合わせるのか、食事をどう選ぶのかが先に分かるとフォーム入力に進みやすくなります。</p></div><div class="suggestion"><b>具体案</b><p>「宿泊のみ」「宿泊＋発酵体験」「食事つきで相談」のような見せ方を追加します。</p></div></li>
+        <li class="finding"><div class="priority priority-b"><strong>B</strong><span>すぐ試せる</span></div><div><h3>商品注文と宿泊予約の関係をつなげる</h3><p>商品注文は外部通販サイトへ進むため、宿泊予約ページでも「お米・どぶろくはこちら」と目的別に案内すると分かりやすくなります。</p></div><div class="suggestion"><b>具体案</b><p>予約ページ下部の商品案内に「宿泊ではなく商品購入の方はこちら」と一文を添えます。</p></div></li>
+        <li class="finding"><div class="priority priority-c"><strong>C</strong><span>中期で効く</span></div><div><h3>季節の体験や食事内容を発信から予約へつなげる</h3><p>発酵体験や食の魅力は季節性があるため、SNSやブログから予約フォームへ進めると関心が途切れにくくなります。</p></div><div class="suggestion"><b>具体案</b><p>投稿末尾に「この体験について問い合わせる」「宿泊と一緒に相談する」を追加します。</p></div></li>
+      </ul>
+    </section>
+
+    <section>
+      <div class="section-head"><h2>入口整理の見せ方サンプル</h2><p class="section-note">初回訪問者には、ページ名より先に目的を見せると進みやすくなりそうです。</p></div>
+      <div class="demo">
+        <div class="before"><div class="demo-label">現在起きやすい見え方</div><div class="demo-body"><ul class="plain-list"><li>宿泊の案内を見る</li><li>発酵体験を見る</li><li>食事を確認する</li><li>商品注文へ進む</li><li>フォームへ入力する</li></ul></div></div>
+        <div class="after"><div class="demo-label">整理後の見せ方例</div><div class="demo-body"><div class="choice-grid">
+          <div class="choice"><small>泊まりたい方</small><b>宿泊予約へ進む</b><span>希望日、人数、食事、返信後の予約確定までを確認して進みます。</span><a class="button" href="#">宿泊を相談</a></div>
+          <div class="choice"><small>体験したい方</small><b>発酵体験を相談</b><span>宿泊と一緒に体験できるか、日程や人数に合わせて相談できます。</span><a class="button" href="#">体験を相談</a></div>
+          <div class="choice"><small>商品を買いたい方</small><b>お米・どぶろくを見る</b><span>宿泊ではなく商品注文の方は、通販サイトへ進めるようにします。</span><a class="button" href="#">商品を見る</a></div>
+        </div></div></div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head"><h2>そのまま使えそうな改善文言</h2><p class="section-note">まずは文章とボタンだけでも、予約・購入前の迷いを減らせそうです。</p></div>
+      <div class="copy-box">
+        <div class="copy"><b>はじめての方への案内文</b><p>はじめての方は、宿泊、発酵体験、商品購入の中から目的に合わせてお選びください。宿泊や体験は、当宿からの返信をもってご予約確定となります。</p></div>
+        <div class="copy"><b>宿泊と体験の案内文</b><p>宿泊とあわせて発酵体験をご希望の場合は、希望日・人数・食事の内容と一緒に、体験のご希望をフォームへご入力ください。</p></div>
+        <div class="copy"><b>商品購入の案内文</b><p>お米やどぶろくのみをご希望の方は、通販サイトよりご注文いただけます。宿泊や体験についてはお問い合わせフォームよりご相談ください。</p></div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head"><h2>必要なら支援できそうなこと</h2><p class="section-note">大きく作り替えるより、予約・注文に近い箇所から小さく整えるのが良さそうです。</p></div>
+      <div class="support">
+        <div class="card"><div class="card-top"><span class="icon"><svg viewBox="0 0 24 24"><path d="M3 5h18"></path><path d="M3 12h18"></path><path d="M3 19h18"></path></svg></span><h3>目的別導線の整理</h3></div><p>宿泊、発酵体験、商品購入、問い合わせの入口を分け、初回訪問者が迷いにくい順番に整えます。</p><ul class="mini-list"><li>目的別入口の追加</li><li>宿泊と体験の組み合わせ案内</li><li>商品通販への橋渡し</li></ul></div>
+        <div class="card"><div class="card-top"><span class="icon"><svg viewBox="0 0 24 24"><path d="M4 19.5V4.5A2.5 2.5 0 0 1 6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5Z"></path><path d="M8 7h8"></path><path d="M8 11h8"></path><path d="M8 15h5"></path></svg></span><h3>SNS・ブログ文面の整理</h3></div><p>発酵体験、食事、お米、どぶろくの魅力を、予約や商品注文につながる文章に整えます。</p><ul class="mini-list"><li>季節体験の投稿文</li><li>商品紹介文</li><li>予約前Q&Aの整理</li></ul></div>
+      </div>
+    </section>
+
+    <footer><p>本ページは、外から拝見した範囲での簡易レビューです。実際の受け入れ方針、空室、体験内容、販売方針によって優先度は変わるため、まずは小さく試せる改善から進めるのがよさそうです。</p><p>YUKU合同会社 / 浜崎弘行</p></footer>
+  </main>
+</body>
+</html>
