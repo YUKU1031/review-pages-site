@@ -1,0 +1,523 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>燻製BALPALさん Web販売導線レビュー</title>
+  <style>
+    :root {
+      --ink: #1f2d26;
+      --muted: #5b6a61;
+      --line: #dbe6da;
+      --cream: #fffef9;
+      --green: #2d6e4f;
+      --green-2: #4f9669;
+      --mint: #e9f5eb;
+      --amber: #9a6a24;
+      --amber-soft: #fff2d9;
+      --red: #a84b3c;
+      --red-soft: #fae7e3;
+      --blue: #2f6f8f;
+      --blue-soft: #e8f2f6;
+      --shadow: 0 18px 45px rgba(48, 65, 54, .10);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(105, 161, 111, .16), transparent 320px),
+        linear-gradient(180deg, #fcfbf6 0%, #f7f5ec 100%);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.75;
+    }
+    main {
+      width: min(1080px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 64px;
+    }
+    .hero {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 24px;
+      align-items: stretch;
+      padding: 36px 0 28px;
+    }
+    .hero-copy {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 390px;
+      padding: 12px 0;
+    }
+    .eyebrow {
+      color: var(--green);
+      font-size: 13px;
+      font-weight: 800;
+      margin: 0 0 10px;
+    }
+    h1 {
+      font-size: clamp(30px, 5vw, 54px);
+      line-height: 1.18;
+      letter-spacing: 0;
+      margin: 0;
+    }
+    h2 {
+      font-size: clamp(22px, 3vw, 30px);
+      line-height: 1.35;
+      letter-spacing: 0;
+      margin: 0;
+    }
+    h3 {
+      font-size: 16px;
+      line-height: 1.45;
+      letter-spacing: 0;
+      margin: 0;
+    }
+    p, li {
+      color: var(--muted);
+      font-size: 14px;
+      margin: 0;
+    }
+    .lead {
+      max-width: 720px;
+      color: var(--muted);
+      font-size: 16px;
+      margin: 18px 0 0;
+    }
+    .panel, .card, .finding, .copy, .before, .after {
+      background: var(--cream);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: 0 10px 28px rgba(48, 65, 54, .06);
+    }
+    .panel {
+      padding: 22px;
+      box-shadow: var(--shadow);
+    }
+    .stamp {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      padding: 6px 10px;
+      color: var(--green);
+      background: var(--mint);
+      border: 1px solid #cae1ca;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+    }
+    .summary-list, .finding-list, .plain-list {
+      display: grid;
+      gap: 12px;
+      margin: 20px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+    .summary-list li, .plain-list li {
+      padding: 13px;
+      background: #fbfff9;
+      border: 1px solid #e0eadf;
+      border-radius: 8px;
+    }
+    section {
+      padding: 34px 0;
+      border-top: 1px solid var(--line);
+    }
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+    .section-note {
+      max-width: 460px;
+      color: var(--muted);
+      font-size: 14px;
+      margin: 0;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    .card { padding: 18px; }
+    .card-top {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    .icon {
+      width: 34px;
+      height: 34px;
+      display: inline-grid;
+      place-items: center;
+      color: var(--green);
+      background: white;
+      border: 1px solid #d8e7d8;
+      border-radius: 8px;
+      flex: 0 0 auto;
+    }
+    .icon svg {
+      width: 18px;
+      height: 18px;
+      stroke: currentColor;
+      stroke-width: 2;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .finding {
+      display: grid;
+      grid-template-columns: 116px 1fr 1.1fr;
+      gap: 16px;
+      align-items: stretch;
+      padding: 16px;
+    }
+    .priority {
+      display: grid;
+      align-content: center;
+      justify-items: center;
+      gap: 6px;
+      min-height: 100%;
+      border-radius: 8px;
+      font-weight: 800;
+    }
+    .priority strong {
+      font-size: 24px;
+      line-height: 1;
+    }
+    .priority span { font-size: 12px; }
+    .priority-a { color: var(--red); background: var(--red-soft); }
+    .priority-b { color: var(--amber); background: var(--amber-soft); }
+    .priority-c { color: var(--blue); background: var(--blue-soft); }
+    .finding h3 { margin-bottom: 6px; }
+    .suggestion {
+      background: #f7fbf5;
+      border: 1px solid #d7e8d3;
+      border-radius: 8px;
+      padding: 14px;
+    }
+    .suggestion b, .copy b {
+      display: block;
+      color: var(--green);
+      font-size: 13px;
+      margin-bottom: 6px;
+    }
+    .demo {
+      display: grid;
+      grid-template-columns: .85fr 1.15fr;
+      gap: 18px;
+      align-items: start;
+    }
+    .before, .after { overflow: hidden; }
+    .demo-label {
+      padding: 12px 14px;
+      font-size: 13px;
+      font-weight: 800;
+      border-bottom: 1px solid var(--line);
+    }
+    .before .demo-label { color: var(--amber); background: #fff7e7; }
+    .after .demo-label { color: var(--green); background: var(--mint); }
+    .demo-body { padding: 16px; }
+    .choice-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+    .choice {
+      min-height: 182px;
+      padding: 14px;
+      border: 1px solid #d7e8d3;
+      border-radius: 8px;
+      background: #fbfff9;
+    }
+    .choice b {
+      display: block;
+      color: var(--ink);
+      font-size: 15px;
+      margin-bottom: 7px;
+    }
+    .choice small {
+      display: block;
+      color: var(--green);
+      font-size: 12px;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+    .choice span {
+      display: block;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.65;
+    }
+    .button {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 9px 12px;
+      color: white;
+      background: var(--green-2);
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .copy-box, .support {
+      display: grid;
+      gap: 14px;
+    }
+    .copy { padding: 16px; }
+    .support {
+      grid-template-columns: 1fr 1fr;
+      align-items: stretch;
+    }
+    .mini-list {
+      margin: 12px 0 0;
+      padding-left: 18px;
+    }
+    .mini-list li { margin: 5px 0; }
+    footer {
+      color: var(--muted);
+      font-size: 13px;
+      padding-top: 28px;
+      border-top: 1px solid var(--line);
+    }
+    @media (max-width: 860px) {
+      main { width: min(100% - 24px, 1080px); }
+      .hero, .demo, .support { grid-template-columns: 1fr; }
+      .hero-copy { min-height: auto; padding: 18px 0 0; }
+      .grid, .choice-grid { grid-template-columns: 1fr; }
+      .section-head { display: block; }
+      .section-note { margin-top: 8px; }
+      .finding { grid-template-columns: 1fr; }
+      .priority {
+        min-height: 72px;
+        grid-auto-flow: column;
+        justify-content: start;
+        padding: 0 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">外から拝見した無料所感レビュー</p>
+        <h1>燻製BALPALさんの<br>Web販売導線レビュー</h1>
+        <p class="lead">
+          燻製・チーズ・おつまみギフトを、初めて訪れた方が用途やお酒の種類に合わせて選びやすくするための見せ方を、外から拝見した範囲で整理しました。
+        </p>
+      </div>
+      <aside class="panel">
+        <span class="stamp">1ページ簡易レビュー</span>
+        <ul class="summary-list">
+          <li>見る範囲は、公式通販サイト・商品カテゴリ・購入方法・大口注文の導線です。</li>
+          <li>評価ではなく、初めて購入する人の目線で「迷いやすそうな箇所」を整理しています。</li>
+          <li>すぐ試せる文言例と、用途別の商品選びサンプルまで入れています。</li>
+        </ul>
+      </aside>
+    </header>
+
+    <section>
+      <div class="section-head">
+        <h2>まず良いなと感じた点</h2>
+        <p class="section-note">商品数と切り口が豊富なので、選び方を少し前に出すと購入につながりやすくなりそうです。</p>
+      </div>
+      <div class="grid">
+        <div class="card">
+          <div class="card-top">
+            <span class="icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"></path></svg>
+            </span>
+            <h3>おつまみギフトの用途が広い</h3>
+          </div>
+          <p>家飲み、手土産、父の日、オンライン飲み会、社内イベントなど、個人にも法人にも提案しやすい商品構成です。</p>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <span class="icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.7l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.7l7 4a2 2 0 0 0 2 0l7-4a2 2 0 0 0 1-1.7Z"></path><path d="m3.3 7 8.7 5 8.7-5"></path><path d="M12 22V12"></path></svg>
+            </span>
+            <h3>お酒別カテゴリが強い</h3>
+          </div>
+          <p>日本酒、焼酎、ウイスキー、ビール、白ワイン、赤ワインに合うカテゴリがあり、購入者が選びやすい切り口があります。</p>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <span class="icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M4 19.5V4.5A2.5 2.5 0 0 1 6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5Z"></path><path d="M8 7h8"></path><path d="M8 11h8"></path><path d="M8 15h5"></path></svg>
+            </span>
+            <h3>大口注文への案内がある</h3>
+          </div>
+          <p>社内イベントやキックオフ、オンライン飲み会向けに、問い合わせフォームや電話で相談できる導線が用意されています。</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <h2>初めての方が迷いやすそうな点</h2>
+        <p class="section-note">「悪い点」ではなく、購入前に確認したいことがもう少しまとまると良さそうな箇所です。</p>
+      </div>
+      <ul class="finding-list">
+        <li class="finding">
+          <div class="priority priority-a"><strong>A</strong><span>最初に整えたい</span></div>
+          <div>
+            <h3>商品数が多い分、用途別の入口をもう少し前に出す</h3>
+            <p>お酒別カテゴリは便利ですが、初めての方は「父の日」「手土産」「自宅用」「法人向け」など、目的から入れるとさらに選びやすそうです。</p>
+          </div>
+          <div class="suggestion">
+            <b>具体案</b>
+            <p>トップ付近に「ギフト」「家飲み」「お酒に合わせる」「大口注文」の4つの入口を置き、該当商品へ案内します。</p>
+          </div>
+        </li>
+        <li class="finding">
+          <div class="priority priority-a"><strong>A</strong><span>購入判断に近い</span></div>
+          <div>
+            <h3>賞味期限・冷蔵保存・アレルギー情報の見方を整理する</h3>
+            <p>商品説明には賞味期限や保存方法、特定原材料が丁寧に書かれていますが、ギフト購入者には比較時に一覧で見えると安心です。</p>
+          </div>
+          <div class="suggestion">
+            <b>具体案</b>
+            <p>セット商品の近くに「冷蔵配送」「賞味期限の目安」「アレルギー確認」の短いチェック欄を置きます。</p>
+          </div>
+        </li>
+        <li class="finding">
+          <div class="priority priority-b"><strong>B</strong><span>すぐ試せる</span></div>
+          <div>
+            <h3>大口注文で相談できる内容を先に見せる</h3>
+            <p>大口注文の導線はありますが、どんな相談ができるかが先に見えると、法人担当者が問い合わせやすくなります。</p>
+          </div>
+          <div class="suggestion">
+            <b>具体案</b>
+            <p>「複数配送」「予算別セット」「請求・納期相談」「送り先リスト添付」のように、相談できる内容を箇条書きで置きます。</p>
+          </div>
+        </li>
+        <li class="finding">
+          <div class="priority priority-c"><strong>C</strong><span>中期で効く</span></div>
+          <div>
+            <h3>コラム・レシピから商品購入へつなげる</h3>
+            <p>燻製とは、コラム、レシピのコンテンツがあるため、読み物から「この料理に合う商品」へ進める導線があると回遊しやすくなります。</p>
+          </div>
+          <div class="suggestion">
+            <b>具体案</b>
+            <p>記事末尾に「このお酒に合う商品を見る」「手土産向けセットを見る」を追加します。</p>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <h2>商品選び導線の見せ方サンプル</h2>
+        <p class="section-note">実際の運用に合わせて調整が必要ですが、初回訪問者にはこのくらい選択肢を整理すると進みやすそうです。</p>
+      </div>
+      <div class="demo">
+        <div class="before">
+          <div class="demo-label">現在起きやすい見え方</div>
+          <div class="demo-body">
+            <ul class="plain-list">
+              <li>セット・詰め合わせを見る</li>
+              <li>お酒別カテゴリを見る</li>
+              <li>商品説明を読み込む</li>
+              <li>購入方法を確認する</li>
+              <li>大口注文は問い合わせる</li>
+            </ul>
+          </div>
+        </div>
+        <div class="after">
+          <div class="demo-label">整理後の見せ方例</div>
+          <div class="demo-body">
+            <div class="choice-grid">
+              <div class="choice">
+                <small>ギフト・手土産</small>
+                <b>失敗しにくいセットから選ぶ</b>
+                <span>父の日、手土産、誕生日など用途別に、価格帯と賞味期限を見ながら選べるようにします。</span>
+                <a class="button" href="#">ギフトを見る</a>
+              </div>
+              <div class="choice">
+                <small>お酒に合わせたい方</small>
+                <b>日本酒・ワイン・ビールで選ぶ</b>
+                <span>お酒別カテゴリを入口にして、相性の良い詰め合わせへ進めるようにします。</span>
+                <a class="button" href="#">お酒別で選ぶ</a>
+              </div>
+              <div class="choice">
+                <small>法人・大口注文</small>
+                <b>複数配送や予算を相談する</b>
+                <span>社内イベント、オンライン飲み会、複数配送、送り先リスト添付の相談へつなげます。</span>
+                <a class="button" href="#">大口注文を相談</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <h2>そのまま使えそうな改善文言</h2>
+        <p class="section-note">まずは文章とボタンだけでも、購入前の迷いを減らせそうです。</p>
+      </div>
+      <div class="copy-box">
+        <div class="copy">
+          <b>はじめての方への案内文</b>
+          <p>はじめての方は、ギフト・家飲み・お酒別・大口注文の中から用途に合わせてお選びください。賞味期限や保存方法も商品ごとに確認できます。</p>
+        </div>
+        <div class="copy">
+          <b>ギフト商品の確認文</b>
+          <p>贈り物にご利用の場合は、価格帯、賞味期限、冷蔵保存、アレルギー情報を確認してからお選びいただくと安心です。</p>
+        </div>
+        <div class="copy">
+          <b>大口注文の案内文</b>
+          <p>社内イベントやオンライン飲み会などの大口注文は、予算別セット、複数配送、送り先リスト添付、納期について事前にご相談いただけます。</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <h2>必要なら支援できそうなこと</h2>
+        <p class="section-note">大きく作り替えるより、購入に近い箇所から小さく整えるのが良さそうです。</p>
+      </div>
+      <div class="support">
+        <div class="card">
+          <div class="card-top">
+            <span class="icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M3 5h18"></path><path d="M3 12h18"></path><path d="M3 19h18"></path></svg>
+            </span>
+            <h3>用途別導線の整理</h3>
+          </div>
+          <p>既存の商品カテゴリを活かしながら、初めての方が目的・お酒・価格帯で迷いにくい順番に整えます。</p>
+          <ul class="mini-list">
+            <li>ギフト・家飲み入口の追加</li>
+            <li>お酒別カテゴリの案内整理</li>
+            <li>賞味期限・保存方法の見せ方整理</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <span class="icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M4 19.5V4.5A2.5 2.5 0 0 1 6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5Z"></path><path d="M8 7h8"></path><path d="M8 11h8"></path><path d="M8 15h5"></path></svg>
+            </span>
+            <h3>SNS・コラム文面の整理</h3>
+          </div>
+          <p>季節ギフトやレシピ、イベント情報を、商品購入や問い合わせにつながる文章に整えます。</p>
+          <ul class="mini-list">
+            <li>父の日・季節ギフト投稿</li>
+            <li>お酒別おすすめ投稿</li>
+            <li>大口注文の案内文</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>本ページは、外から拝見した範囲での簡易レビューです。実際の販売方針、在庫、配送方法、運用状況によって優先度は変わるため、まずは小さく試せる改善から進めるのがよさそうです。</p>
+      <p>YUKU合同会社 / 浜崎弘行</p>
+    </footer>
+  </main>
+</body>
+</html>
